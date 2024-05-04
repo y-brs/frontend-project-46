@@ -12,9 +12,9 @@ program
   .helpOption('-h, --help', 'output usage information')
   .usage('[options] <filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format')
-  .arguments('<filepath1>')
-  .arguments('<filepath2>')
-  .action((filepath1, filepath2) => {
-    console.log(genDiff(filepath1, filepath2));
+  .arguments('<file1>')
+  .arguments('<file2>')
+  .action((file1, file2) => {
+    console.log(genDiff(file1, file2));
   })
   .parse();
