@@ -4,7 +4,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 import _ from 'lodash';
-import getParse from './parsefile.js';
+import getParse from './parsers.js';
 import getReadFile from './readfile.js';
 
 const genDiff = (file1, file2) => {
