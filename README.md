@@ -1,5 +1,11 @@
+# Difference Calculator
+
 ### Hexlet tests and linter status:
 
-[![Actions Status](https://github.com/y-brs/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/y-brs/frontend-project-46/actions)
+[![hexlet-check](https://github.com/y-brs/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/y-brs/frontend-project-46/actions/workflows/hexlet-check.yml)
 
-# Difference Calculator
+[![Maintainability](https://api.codeclimate.com/v1/badges/6724b62164afb73abe0f/maintainability)](https://codeclimate.com/github/y-brs/frontend-project-46/maintainability)
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/6724b62164afb73abe0f/test_coverage)](https://codeclimate.com/github/y-brs/frontend-project-46/test_coverage)
+
+### Example
