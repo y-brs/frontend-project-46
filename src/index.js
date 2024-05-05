@@ -1,6 +1,4 @@
-/* eslint-disable operator-linebreak */
 /* eslint-disable comma-dangle */
-/* eslint-disable no-restricted-syntax */
 /* eslint-disable import/no-extraneous-dependencies */
 
 import _ from 'lodash';

@@ -1,3 +1,6 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-undef */
+
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import fs from 'node:fs';

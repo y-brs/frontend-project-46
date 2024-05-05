@@ -7,6 +7,7 @@ const getReadFile = (filePath) => {
   }
 
   const absoluteFilePath = path.resolve(process.cwd(), filePath);
+
   return fs.readFileSync(absoluteFilePath);
 };
 
