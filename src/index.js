@@ -1,36 +1,10 @@
-/* eslint-disable comma-dangle */
-/* eslint-disable import/no-extraneous-dependencies */
+import genDiff from './formatters/index.js';
+import parser from './parser.js';
+import { getFileData, getFileExtension } from './utils.js';
 
-import _ from 'lodash';
-import getParse from './parsers.js';
-import getReadFile from './readfile.js';
-
-const genDiff = (file1, file2) => {
-  const parsedFile1 = getParse(file1, getReadFile(file1));
-  const parsedFile2 = getParse(file2, getReadFile(file2));
-
-  const sortedKeys = _.sortBy(
-    _.union(Object.keys(parsedFile1), Object.keys(parsedFile2))
+export default (filepath1, filepath2, formatterName) =>
+  genDiff(
+    parser(getFileData(filepath1), getFileExtension(filepath1)),
+    parser(getFileData(filepath2), getFileExtension(filepath2)),
+    formatterName
   );
-
-  const resultData = sortedKeys.map((key) => {
-    if (!Object.hasOwnProperty.call(parsedFile2, key)) {
-      return `  - ${key}: ${parsedFile1[key]}`;
-    }
-
-    if (!Object.hasOwnProperty.call(parsedFile1, key)) {
-      return `  + ${key}: ${parsedFile2[key]}`;
-    }
-
-    if (parsedFile1[key] === parsedFile2[key]) {
-      return `    ${key}: ${parsedFile1[key]}`;
-    }
-
-    return `  - ${key}: ${parsedFile1[key]}\n  + ${key}: ${parsedFile2[key]}`;
-  });
-
-  const strData = resultData.join('\n');
-  return `{\n${strData}\n}`;
-};
-
-export default genDiff;

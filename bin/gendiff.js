@@ -7,14 +7,14 @@ const program = new Command();
 
 program
   .name('gendiff')
-  .version('1.0.0', '-V, --version', 'output the version number')
   .description('Compares two configuration files and shows a difference.')
-  .helpOption('-h, --help', 'output usage information')
-  .usage('[options] <filepath1> <filepath2>')
-  .option('-f, --format <type>', 'output format')
-  .arguments('<file1>')
-  .arguments('<file2>')
-  .action((file1, file2) => {
-    console.log(genDiff(file1, file2));
-  })
-  .parse();
+  .version('0.1.0')
+  .option('-f, --format <type>', 'output format (default: stylish)')
+  .argument('<filepath1>', 'path to first file')
+  .argument('<filepath2>', 'path to second file')
+  .action((filepath1, filepath2, formatName) => {
+    const diff = genDiff(filepath1, filepath2, formatName.format);
+    console.log(diff);
+  });
+
+program.parse();

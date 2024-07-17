@@ -1,24 +1,84 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-undef */
+/* eslint no-undef: off */
 
+import * as fs from 'fs';
+import * as path from 'path';
+import { dirname } from 'path';
 import { fileURLToPath } from 'url';
-import path, { dirname } from 'path';
-import fs from 'node:fs';
 import genDiff from '../src/index.js';
+import parser from '../src/parser.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const getFixturePath = (filename) =>
   path.join(__dirname, '..', '__fixtures__', filename);
+const readFile = (filename) => fs.readFileSync(getFixturePath(filename));
 
-const readFixture = (filename) =>
-  fs.readFileSync(getFixturePath(filename), 'utf-8');
+const expectedStylish = readFile('expected_stylish.txt').toString();
+const expectedPlain = readFile('expected_plain.txt').toString();
+const expectedJSON = readFile('expected_json.txt').toString();
 
-const getPathFile1 = getFixturePath('file1.json');
-const getPathFile2 = getFixturePath('file2.json');
-const readExpectedFile = readFixture('expected_file.txt');
+const casesStylish = [
+  ['json', 'stylish', expectedStylish],
+  ['json', undefined, expectedStylish],
+  ['yaml', 'stylish', expectedStylish],
+  ['yaml', undefined, expectedStylish],
+  ['yml', 'stylish', expectedStylish],
+  ['yml', undefined, expectedStylish],
+];
 
-test('genDiff', () => {
-  expect(genDiff(getPathFile1, getPathFile2)).toEqual(readExpectedFile);
+const casesPlain = [
+  ['json', 'plain', expectedPlain],
+  ['yaml', 'plain', expectedPlain],
+  ['yml', 'plain', expectedPlain],
+];
+
+const casesJSON = [
+  ['json', 'json', expectedJSON],
+  ['yaml', 'json', expectedJSON],
+  ['yml', 'json', expectedJSON],
+];
+
+test.each(casesPlain)('plain format', (fileExtention, formatName, expected) => {
+  const actual = genDiff(
+    getFixturePath(`file1.${fileExtention}`),
+    getFixturePath(`file2.${fileExtention}`),
+    formatName
+  );
+  expect(actual).toEqual(expected);
+});
+
+test.each(casesJSON)('JSON format', (fileExtention, formatName, expected) => {
+  const actual = genDiff(
+    getFixturePath(`file1.${fileExtention}`),
+    getFixturePath(`file2.${fileExtention}`),
+    formatName
+  );
+  expect(actual).toEqual(expected);
+});
+
+test.each(casesStylish)(
+  'stylish format',
+  (fileExtention, formatName, expected) => {
+    const actual = genDiff(
+      getFixturePath(`file1.${fileExtention}`),
+      getFixturePath(`file2.${fileExtention}`),
+      formatName
+    );
+    expect(actual).toEqual(expected);
+  }
+);
+
+test('main functionality with wrong data', () => {
+  expect(() => {
+    genDiff(
+      getFixturePath('file1.json'),
+      getFixturePath('file2.json'),
+      'newType'
+    );
+  }).toThrow('Unknown format!');
+});
+
+test('parser with wrong data', () => {
+  expect(() => {
+    parser('I am file.js');
+  }).toThrow('Format file is not correct!');
 });

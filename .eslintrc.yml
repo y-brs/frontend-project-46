@@ -17,3 +17,5 @@ rules:
   no-underscore-dangle: [2, { 'allow': ['__filename', '__dirname'] }]
   max-len: ['error', { 'code': 150 }]
   no-unused-expressions: off
+  implicit-arrow-linebreak: off
+  comma-dangle: off
