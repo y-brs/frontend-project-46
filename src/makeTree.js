@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const makeAstTree = (data1, data2) =>
+const makeTree = (data1, data2) =>
   _.sortBy(_.union(_.keys(data1), _.keys(data2))).map((key) => {
     const value1 = data1[key];
     const value2 = data2[key];
@@ -12,6 +12,7 @@ const makeAstTree = (data1, data2) =>
         value1,
       };
     }
+
     if (!_.has(data1, key)) {
       return {
         status: 'added',
@@ -19,13 +20,15 @@ const makeAstTree = (data1, data2) =>
         value2,
       };
     }
+
     if (_.isObject(value1) && _.isObject(value2)) {
       return {
         status: 'nested',
         key,
-        children: makeAstTree(value1, value2),
+        children: makeTree(value1, value2),
       };
     }
+
     if (value1 !== value2) {
       return {
         status: 'changed',
@@ -34,6 +37,7 @@ const makeAstTree = (data1, data2) =>
         value2,
       };
     }
+
     return {
       status: 'unchanged',
       value1,
@@ -41,4 +45,4 @@ const makeAstTree = (data1, data2) =>
     };
   });
 
-export default makeAstTree;
+export default makeTree;

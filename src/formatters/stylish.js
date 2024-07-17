@@ -25,7 +25,7 @@ const stringify = (value, depth = 1) => {
   return ['{', ...lines, `${bracketIndent}}`].join('\n');
 };
 
-const genDiffStylish = (tree) => {
+const formatterStylish = (tree) => {
   const iter = (currentValue, depth = 1) => {
     const currentIndent = makeIndent(depth);
     const bracketIndent = makeBracketIndent(depth);
@@ -73,4 +73,4 @@ const genDiffStylish = (tree) => {
   return iter(tree);
 };
 
-export default genDiffStylish;
+export default formatterStylish;

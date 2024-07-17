@@ -7,9 +7,7 @@ export const getValueOf = (value) => {
     case null:
       return null;
     case 'object':
-      if (value === null) {
-        return value;
-      }
+      if (value === null) return value;
       return '[complex value]';
     default:
       return value;
@@ -18,6 +16,7 @@ export const getValueOf = (value) => {
 
 export default (tree) => {
   const property = 'Property';
+
   const iter = (object, path) => {
     const result = object.map((key) => {
       const fullKey = `${path}${key.key}`;
@@ -35,7 +34,6 @@ export default (tree) => {
           return `${property} '${fullKey}' was updated. From ${getValueOf(
             key.value1
           )} to ${getValueOf(key.value2)}`;
-
         default:
           return null;
       }

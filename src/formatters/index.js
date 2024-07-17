@@ -1,5 +1,5 @@
-import genDiffStylish from './stylish.js';
-import genDiffPlain from './plain.js';
+import stylish from './stylish.js';
+import plain from './plain.js';
 import makeTree from '../makeTree.js';
 
 export default (parseFile1, parseFile2, formatterName = 'stylish') => {
@@ -7,9 +7,9 @@ export default (parseFile1, parseFile2, formatterName = 'stylish') => {
 
   switch (formatterName) {
     case 'stylish':
-      return genDiffStylish(tree);
+      return stylish(tree);
     case 'plain':
-      return genDiffPlain(tree);
+      return plain(tree);
     case 'json':
       return JSON.stringify(tree);
     default:

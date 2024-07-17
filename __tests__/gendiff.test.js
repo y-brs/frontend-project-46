@@ -1,8 +1,7 @@
 /* eslint no-undef: off */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import { dirname } from 'path';
+import fs from 'fs';
+import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import genDiff from '../src/index.js';
 import parser from '../src/parser.js';
