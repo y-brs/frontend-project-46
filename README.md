@@ -13,3 +13,5 @@ Compares two configuration files and shows a difference.
 ### Example
 
 [![asciicast](https://asciinema.org/a/EEPbVUqgEm4kXyW7zG18sQZHg.svg)](https://asciinema.org/a/EEPbVUqgEm4kXyW7zG18sQZHg)
+
+[![asciicast](https://asciinema.org/a/EEPbVUqgEm4kXyW7zG18sQZHg.svg)](https://asciinema.org/a/EEPbVUqgEm4kXyW7zG18sQZHg)
