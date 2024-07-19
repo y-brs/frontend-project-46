@@ -36,3 +36,19 @@ test.each(testData)(
     expect(getDifference(file1, file2, format)).toEqual(readFixture(expected));
   }
 );
+
+test('main functionality with wrong data', () => {
+  expect(() => {
+    genDiff(
+      getFixturePath('file1.json'),
+      getFixturePath('file2.json'),
+      'newType'
+    );
+  }).toThrow('Unknown format!');
+});
+
+test('parser with wrong data', () => {
+  expect(() => {
+    parser('I am file.js');
+  }).toThrow('Format file is not correct!');
+});

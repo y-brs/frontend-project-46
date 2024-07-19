@@ -1,13 +1,13 @@
 import _ from 'lodash';
 
-const makeIndent = (depth, replacer = ' ', spacesCount = 4) => {
-  const indent = depth * spacesCount;
+const makeIndent = (depth, replacer = ' ', spaceCount = 4) => {
+  const indent = depth * spaceCount;
   return replacer.repeat(indent - 2);
 };
 
-const makeBracketIndent = (depth, replacer = ' ', spacesCount = 4) => {
-  const indent = depth * spacesCount;
-  return replacer.repeat(indent - spacesCount);
+const makeBracketIndent = (depth, replacer = ' ', spaceCount = 4) => {
+  const indent = depth * spaceCount;
+  return replacer.repeat(indent - spaceCount);
 };
 
 const stringify = (value, depth = 1) => {
