@@ -12,6 +12,8 @@ Compares two configuration files and shows a difference.
 
 ### Example
 
-[![asciicast](https://asciinema.org/a/EEPbVUqgEm4kXyW7zG18sQZHg.svg)](https://asciinema.org/a/EEPbVUqgEm4kXyW7zG18sQZHg)
+[![asciicast](https://asciinema.org/a/zAHPswtB6XogggyIEeW5xjeZk.svg)](https://asciinema.org/a/zAHPswtB6XogggyIEeW5xjeZk)
 
-[![asciicast](https://asciinema.org/a/EEPbVUqgEm4kXyW7zG18sQZHg.svg)](https://asciinema.org/a/EEPbVUqgEm4kXyW7zG18sQZHg)
+[![asciicast](https://asciinema.org/a/vskuRx8OIamXteaMVeMXNIe3W.svg)](https://asciinema.org/a/vskuRx8OIamXteaMVeMXNIe3W)
+
+[![asciicast](https://asciinema.org/a/5NKgSv3Px7peUidg3BP6nHLdo.svg)](https://asciinema.org/a/5NKgSv3Px7peUidg3BP6nHLdo)
