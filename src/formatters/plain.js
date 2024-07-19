@@ -26,13 +26,13 @@ export default (tree) => {
           return `${property} '${fullKey}' was removed`;
         case 'added':
           return `${property} '${fullKey}' was added with value: ${getValueOf(
-            key.value2
+            key.value2,
           )}`;
         case 'nested':
           return iter(key.children, `${fullKey}.`);
         case 'changed':
           return `${property} '${fullKey}' was updated. From ${getValueOf(
-            key.value1
+            key.value1,
           )} to ${getValueOf(key.value2)}`;
         default:
           return null;

@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
 /**
- * This function is a callback function used by the commander.js library to handle the 'action' event.
+ * This function is a callback function used by the commander.js library
+ * to handle the 'action' event.
  * It takes three parameters: filepath1, filepath2, and formatName.
- * The function compares two configuration files using the genDiff function and logs the resulting difference to the console.
+ * The function compares two configuration files using the genDiff function
+ * and logs the resulting difference to the console.
  *
  * @param {string} filepath1 - The path to the first configuration file.
  * @param {string} filepath2 - The path to the second configuration file.
- * @param {string} formatName - A string containing the format property, which specifies the output format.
+ * @param {string} formatName - A string containing the format property,
+ * which specifies the output format.
  *
  */
 

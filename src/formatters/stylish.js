@@ -19,7 +19,7 @@ const stringify = (value, depth = 1) => {
   const bracketIndent = makeBracketIndent(depth);
 
   const lines = Object.entries(value).map(
-    ([key, val]) => `${currentIndent}  ${key}: ${stringify(val, depth + 1)}`
+    ([key, val]) => `${currentIndent}  ${key}: ${stringify(val, depth + 1)}`,
   );
 
   return ['{', ...lines, `${bracketIndent}}`].join('\n');
@@ -35,25 +35,25 @@ const formatterStylish = (tree) => {
         case 'nested':
           return `${currentIndent}  ${key.key}: ${iter(
             key.children,
-            depth + 1
+            depth + 1,
           )}`;
 
         case 'deleted':
           return `${currentIndent}- ${key.key}: ${stringify(
             key.value1,
-            depth + 1
+            depth + 1,
           )}`;
 
         case 'added':
           return `${currentIndent}+ ${key.key}: ${stringify(
             key.value2,
-            depth + 1
+            depth + 1,
           )}`;
 
         case 'unchanged':
           return `${currentIndent}  ${key.key}: ${stringify(
             key.value1,
-            depth + 1
+            depth + 1,
           )}`;
 
         case 'changed':

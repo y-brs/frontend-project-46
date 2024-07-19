@@ -9,10 +9,8 @@ import parser from '../src/parser.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const getFixturePath = (filename) =>
-  path.join(__dirname, '..', '__fixtures__', filename);
-const readFixture = (filename) =>
-  fs.readFileSync(getFixturePath(filename), 'utf-8');
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+const readFixture = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
 const getDifference = (file1, file2, format) => {
   const getPathFile1 = getFixturePath(file1);
@@ -30,19 +28,16 @@ const testData = [
   ['file1.yml', 'file2.yml', 'json', 'expected_json.txt'],
 ];
 
-test.each(testData)(
-  'diff(%s, %s, format %s) equals %s',
-  (file1, file2, format, expected) => {
-    expect(getDifference(file1, file2, format)).toEqual(readFixture(expected));
-  }
-);
+test.each(testData)('diff(%s, %s, format %s) equals %s', (file1, file2, format, expected) => {
+  expect(getDifference(file1, file2, format)).toEqual(readFixture(expected));
+});
 
 test('main functionality with wrong data', () => {
   expect(() => {
     genDiff(
       getFixturePath('file1.json'),
       getFixturePath('file2.json'),
-      'newType'
+      'newType',
     );
   }).toThrow('Unknown format!');
 });
