@@ -1,17 +1,15 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
-import makeTree from '../makeTree.js';
+import { tree } from '../index.js';
 
-export default (parseFile1, parseFile2, formatterName = 'stylish') => {
-  const tree = makeTree(parseFile1, parseFile2);
-
+export default (file1, file2, formatterName = 'stylish') => {
   switch (formatterName) {
     case 'stylish':
-      return stylish(tree);
+      return stylish(tree(file1, file2));
     case 'plain':
-      return plain(tree);
+      return plain(tree(file1, file2));
     case 'json':
-      return JSON.stringify(tree);
+      return JSON.stringify(tree(file1, file2));
     default:
       throw new Error('Unknown format!');
   }
